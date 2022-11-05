@@ -23,6 +23,7 @@ socket.on('roomUsers', ({ room, users }) => {
 
 //Sending Message from Server
 socket.on('message', message=>{ 
+   
     outputMessage(message);
 
 //Scroll down
@@ -35,7 +36,7 @@ chatForm.addEventListener('submit', (e) => {
 const msg = e.target.elements.msg.value;
 console.log(msg)
 //Emmit message to server
-socket.emit('chatMessage'.msg);
+socket.emit('chatMessage',msg);
 //Clear inputs
 e.target.elements.msg.value=""
 e.target.elements.msg.focus();
@@ -43,8 +44,12 @@ e.target.elements.msg.focus();
 
 // message Output to DOM
 function outputMessage(message) {
+    //create and add div 
     const div = document.createElement('div');
     div.classList.add('message');
+    document.querySelector('.chat-messages').appendChild(div);
+
+    //create and add paragraph and time 
     const p = document.createElement('p');
     p.classList.add('meta');
     p.innerText = message.username;
@@ -54,7 +59,7 @@ function outputMessage(message) {
     para.classList.add('text');
     para.innerText = message.text;
     div.appendChild(para);
-    document.querySelector('.chat-messages').appendChild(div);
+    
   }
 
   //Add room Names to DOM

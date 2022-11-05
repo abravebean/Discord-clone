@@ -3,7 +3,7 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const formatMessage = require("./utils/messages");
-
+//Chatter bot
 const botName = 'Chatter Bot'
 
 const app = express();
@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
   
 socket.join(user.room);
   
-// Welcome current user with message 
+// Welcome current user with message from chatterbot 
     socket.emit("message", formatMessage(botName, "Welcome to Discord!"));
   
 // Broadcast when a user connects
@@ -46,9 +46,9 @@ socket.join(user.room);
   
 // Listen for chatMessage
     socket.on("chatMessage", (msg) => {
-        console.log(msg)
+      
       const user = getCurrentUser(socket.id);
-  
+        
       io.to(user.room).emit("message", formatMessage(user.username, msg));
     });
   

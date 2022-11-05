@@ -21,7 +21,7 @@ socket.on('roomUsers', ({ room, users }) => {
   
   
 
-//Message from Server
+//Sending Message from Server
 socket.on('message', message=>{ 
     outputMessage(message);
 
@@ -31,17 +31,17 @@ chatMessages.scrollTop=chatMessages.scrollHeight;
 //Sending Message 
 chatForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    //Get message text
+//Get message text
 const msg = e.target.elements.msg.value;
-
+console.log(msg)
 //Emmit message to server
-socket.emit('chatMessage'.msg)
+socket.emit('chatMessage'.msg);
 //Clear inputs
 e.target.elements.msg.value=""
 e.target.elements.msg.focus();
 });
 
-// Output message to DOM
+// message Output to DOM
 function outputMessage(message) {
     const div = document.createElement('div');
     div.classList.add('message');
@@ -57,10 +57,10 @@ function outputMessage(message) {
     document.querySelector('.chat-messages').appendChild(div);
   }
 
-  //Add room Name to DOM
+  //Add room Names to DOM
 
   function outputRoomName(room){
-    roomName.innerText = rooms;
+    roomName.innerText = room;
   }
 
 // Add users to DOM

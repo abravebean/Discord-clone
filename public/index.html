@@ -12,8 +12,33 @@
 		/>
 		<link rel="stylesheet" href="css/style.css" />
 		<title>Discord ChatRoom</title>
+		<script src="typed.js"></script>
+		<style>
+			.typed{
+				font-size:15px;
+				margin-left:15%;
+			}
+			.typed #typed{
+				color:#7289da;
+			}
+		</style>
 	</head>
 	<body>
+		
+		<div class="typed">
+		<h1>Hello there,<span id="typed"></span></h1>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+		<script>
+			var typed = new Typed("#typed", {
+			strings:['Welcome to Discord Chatroom','Pick a Username','Pick a Room'],
+			typeSpeed:100,
+			backSpeed:100,
+			loop:true
+			});
+		  </script>
+		 
 		<div class="join-container">
 			<header class="join-header">
 				<h1><i class="fas fa-smile"></i> Discord</h1>
